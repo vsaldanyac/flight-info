@@ -3,11 +3,17 @@ services:
 
   flight-services:
     build:
-      context: ./
+      context: ./flight
     ports:
       - 8080:8080
     links:
       - redis
+
+  plane-services:
+    build:
+      context: ./plane
+    ports:
+      - 8081:8081
 
   redis:
     image: redis

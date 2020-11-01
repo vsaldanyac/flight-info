@@ -1,0 +1,101 @@
+[{
+  "ident": "IBB653",
+  "faFlightID": "IBB653-1581399936-airline-0136",
+  "airline": "IBB",
+  "airline_iata": "NT",
+  "flightnumber": "653",
+  "tailnumber": "EC-MYT",
+  "type": "Form_Airline",
+  "codeshares": "IBE123",
+  "blocked": false,
+  "diverted": false,
+  "cancelled": false,
+  "origin": {
+    "code": "GCXO",
+    "city": "Tenerife",
+    "alternate_ident": "TFN",
+    "airport_name": "Tenerife North (Los Rodeos)"
+  },
+  "destination": {
+    "code": "GCGM",
+    "city": "La Gomera",
+    "alternate_ident": "GMZ",
+    "airport_name": "La Gomera"
+  }
+},
+  {
+    "ident": "IBB654",
+    "faFlightID": "IBB654-1581399936-airline-0136",
+    "airline": "IBB",
+    "airline_iata": "NT",
+    "flightnumber": "654",
+    "tailnumber": "EC-MYT",
+    "type": "Form_Airline",
+    "codeshares": "IBE124",
+    "blocked": false,
+    "diverted": false,
+    "cancelled": false,
+    "origin": {
+      "code": "GCGM",
+      "city": "La Gomera",
+      "alternate_ident": "GMZ",
+      "airport_name": "La Gomera"
+    },
+    "destination": {
+      "code": "GCXO",
+      "city": "Tenerife",
+      "alternate_ident": "TFN",
+      "airport_name": "Tenerife North (Los Rodeos)"
+    }
+  },
+  {
+    "ident": "IBB655",
+    "faFlightID": "IBB655-1581399936-airline-0136",
+    "airline": "IBB",
+    "airline_iata": "NT",
+    "flightnumber": "655",
+    "tailnumber": "EC-MYT",
+    "type": "Form_Airline",
+    "codeshares": "IBE125",
+    "blocked": false,
+    "diverted": false,
+    "cancelled": false,
+    "origin": {
+      "code": "GCXO",
+      "city": "Tenerife",
+      "alternate_ident": "TFN",
+      "airport_name": "Tenerife North (Los Rodeos)"
+    },
+    "destination": {
+      "code": "LEBL",
+      "city": "Barcelona",
+      "alternate_ident": "BCN",
+      "airport_name": "Barcelona (El Prat)"
+    }
+  },
+  {
+    "ident": "VY2655",
+    "faFlightID": "VY2655-1581399936-airline-0130",
+    "airline": "VLG",
+    "airline_iata": "VY",
+    "flightnumber": "2655",
+    "tailnumber": "EC-ITB",
+    "type": "Form_Airline",
+    "codeshares": "VLG122",
+    "blocked": false,
+    "diverted": false,
+    "cancelled": false,
+    "origin": {
+      "code": "LEBL",
+      "city": "Barcelona",
+      "alternate_ident": "BCN",
+      "airport_name": "Barcelona (El Prat)"
+    },
+    "destination": {
+      "code": "EKCH",
+      "city": "Copenhage",
+      "alternate_ident": "CPH",
+      "airport_name": "Copenhage"
+    }
+  }
+]
