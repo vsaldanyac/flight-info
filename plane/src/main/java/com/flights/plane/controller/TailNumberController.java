@@ -1,6 +1,7 @@
 package com.flights.plane.controller;
 
 import com.flights.plane.utils.PlaneUtils;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author VSaldanya
  */
 @RestController
-@RequestMapping("/v1/flight-information-tail")
+@RequestMapping(value = "/v1/flight-information-tail", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TailNumberController {
 
   @GetMapping("/{tailNumber}")
