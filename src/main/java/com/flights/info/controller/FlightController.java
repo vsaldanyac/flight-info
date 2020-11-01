@@ -32,7 +32,7 @@ public class FlightController {
    * @param tailNumber   The plane identifier
    * @return Json response with the flight info
    */
-  @GetMapping(value = "/{tailNumber/{flightNumber}")
+  @GetMapping("/{tailNumber}/{flightNumber}")
   public @ResponseBody
   ResponseEntity<?> getFlightInformation(@PathVariable String tailNumber,
       @PathVariable String flightNumber) {
