@@ -19,5 +19,7 @@ public class FlightInfoDAO {
   boolean diverted;
   boolean cancelled;
   AirportDAO origin;
-  AirportDAO detination;
+  AirportDAO destination;
+  String originCode;
+  String destinationCode;
 }
