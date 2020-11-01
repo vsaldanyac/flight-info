@@ -1,8 +1,10 @@
 package com.flights.info.dao.dao;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class FlightInfoDAO {
 
   String ident;
@@ -11,6 +13,7 @@ public class FlightInfoDAO {
   String airlineIata;
   String flightNumber;
   String tailNumber;
+  String codeShares;
   String type;
   boolean blocked;
   boolean diverted;

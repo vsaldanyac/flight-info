@@ -1,6 +1,6 @@
 package com.flights.flight.service;
 
-import com.flights.info.dao.dao.FlightInfoDAO;
+import com.flights.flight.dto.FlightInfoDTO;
 
 /**
  * Give service to all the Flights functionality
@@ -9,5 +9,5 @@ import com.flights.info.dao.dao.FlightInfoDAO;
  */
 public interface FlightService {
 
-  FlightInfoDAO getFlightInformation(String tailNumber, String flightNumber);
+  FlightInfoDTO getFlightInformation(String tailNumber, String flightNumber);
 }
