@@ -5,9 +5,11 @@ import com.flights.info.dao.dao.AirportDAO;
 import com.flights.info.dao.dao.FlightInfoDAO;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class AirportDTOShould {
-  FlightInfoMapper flightInfoMapper = FlightInfoMapper.INSTANCE;
+  @Autowired
+  FlightInfoMapper flightInfoMapper;
 
 
   AirportDAO airportDAO = AirportDAO.builder().airportName("El Prat").alternateIdent("BCN").city("Barcelona").code("LEBL").build();
