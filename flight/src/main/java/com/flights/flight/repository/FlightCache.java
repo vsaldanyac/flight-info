@@ -5,8 +5,7 @@ import com.flights.flight.core.RedisCache;
 import com.flights.info.dao.dao.AirportDAO;
 import com.flights.info.dao.dao.FlightInfoDAO;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static com.flights.flight.repository.utils.KeysForRedis.*;
 
@@ -66,6 +65,22 @@ public class FlightCache extends BaseCache<RedisCache> {
     return flightInfoFromRedis;
   }
 
+  public List<FlightInfoDAO> getTailNumberInfo(String tailNumber) {
+    List<FlightInfoDAO> flightsInfo = new ArrayList();
+
+    Set<String> keysForTailNumber = getKeysForTailNumber(tailNumber);
+    Iterator<String> it = keysForTailNumber.iterator();
+    while (it.hasNext()) {
+      flightsInfo.add(getFlightInfoFromRedis(it.next()));
+    }
+
+    return flightsInfo;
+  }
+
+  private Set<String> getKeysForTailNumber(String tailNumber) {
+    return cache.keys(TAIL_KEY + tailNumber + "*");
+  }
+
   private AirportDAO getAirportInfoFromRedis(String code) {
     Map<String, String> airportInfo = cache.hGetAll(AIRPORT_KEY + code);
     return AirportDAO.builder()
@@ -77,7 +92,11 @@ public class FlightCache extends BaseCache<RedisCache> {
   }
 
   private FlightInfoDAO getFlightInfoFromRedis(String tailNumber, String flightNumber) {
-    Map<String, String> flightInfo = cache.hGetAll(TAIL_KEY + tailNumber + FLIGHT_NUMBER_KEY + flightNumber);
+    return getFlightInfoFromRedis(TAIL_KEY + tailNumber + FLIGHT_NUMBER_KEY + flightNumber);
+  }
+
+  private FlightInfoDAO getFlightInfoFromRedis(String key) {
+    Map<String, String> flightInfo = cache.hGetAll(key);
     return FlightInfoDAO.builder()
         .ident(flightInfo.get(IDENT))
         .faFlightId(flightInfo.get(FA_FLIGHT_ID))

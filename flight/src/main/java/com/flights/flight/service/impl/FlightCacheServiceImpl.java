@@ -6,6 +6,8 @@ import com.flights.info.dao.dao.FlightInfoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FlightCacheServiceImpl implements FlightCacheService {
 
@@ -16,6 +18,11 @@ public class FlightCacheServiceImpl implements FlightCacheService {
   @Override
   public FlightInfoDAO getFlightsInfo(String tailNumber, String flightNumber) {
     return flightCache.getFlightInfo(tailNumber, flightNumber);
+  }
+
+  @Override
+  public List<FlightInfoDAO> getTailNumberInfo(String tailNumber) {
+    return flightCache.getTailNumberInfo(tailNumber);
   }
 
   @Override
