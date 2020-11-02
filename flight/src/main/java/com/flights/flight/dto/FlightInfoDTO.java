@@ -1,10 +1,11 @@
 package com.flights.flight.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.flights.info.dao.dao.AirportDAO;
 import lombok.Data;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FlightInfoDTO {
 
   String ident;
@@ -23,6 +24,6 @@ public class FlightInfoDTO {
   boolean blocked;
   boolean diverted;
   boolean cancelled;
-  AirportDAO origin;
-  AirportDAO detination;
+  AirportDTO origin;
+  AirportDTO destination;
 }

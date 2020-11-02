@@ -9,6 +9,6 @@ public class AirportDTO {
   String city;
   @JsonProperty("alternate_ident")
   String alternateIdent;
-  @JsonProperty("alternate_name")
+  @JsonProperty("airport_name")
   String airportName;
 }

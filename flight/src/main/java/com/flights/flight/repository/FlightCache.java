@@ -22,12 +22,12 @@ public class FlightCache extends BaseCache<RedisCache> {
     super(host, port, poolMinIdle, poolMaxIdle, poolMaxTotal, new RedisCache());
   }
 
-  private Map<String, String> setMapForRedis(FlightInfoDAO flightInfoDAO) {
+  private Map<String, String> setFlightMapForRedis(FlightInfoDAO flightInfoDAO) {
     Map<String, String> hash = new HashMap<>();
     hash.put(IDENT, flightInfoDAO.getIdent());
     hash.put(FA_FLIGHT_ID, flightInfoDAO.getFaFlightId());
     hash.put(AIRLINE, flightInfoDAO.getAirline());
-    hash.put(AIRLNE_IATA, flightInfoDAO.getAirlineIata());
+    hash.put(AIRLINE_IATA, flightInfoDAO.getAirlineIata());
     hash.put(FLIGHT_NUMBER, flightInfoDAO.getFlightNumber());
     hash.put(TAIL_NUMBER, flightInfoDAO.getTailNumber());
     hash.put(CODE_SHARES, flightInfoDAO.getCodeShares());
@@ -40,8 +40,23 @@ public class FlightCache extends BaseCache<RedisCache> {
     return hash;
   }
 
+  private Map<String, String> setAirportMapForRedis(AirportDAO airport) {
+    Map<String, String> hash = new HashMap<>();
+    hash.put(CODE, airport.getCode());
+    hash.put(CITY, airport.getCity());
+    hash.put(AIRPORT_NAME, airport.getAirportName());
+    hash.put(ALTERNATE_IDENT, airport.getAlternateIdent());
+    return hash;
+  }
+
   public void setTailNumber(FlightInfoDAO flightInfoDAO) {
-    cache.hmSet(TAIL_KEY + flightInfoDAO.getTailNumber() + FLIGHT_NUMBER_KEY + flightInfoDAO.getFlightNumber(), setMapForRedis(flightInfoDAO));
+    cache.hmSet(TAIL_KEY + flightInfoDAO.getTailNumber() + FLIGHT_NUMBER_KEY + flightInfoDAO.getFlightNumber(), setFlightMapForRedis(flightInfoDAO));
+    setAirportInfo(flightInfoDAO.getOrigin());
+    setAirportInfo(flightInfoDAO.getDestination());
+  }
+
+  private void setAirportInfo(AirportDAO airportInfo) {
+    cache.hmSet(AIRPORT_KEY + airportInfo.getCode(), setAirportMapForRedis(airportInfo));
   }
 
   public FlightInfoDAO getFlightInfo(String tailNumber, String flightNumber) {
@@ -67,7 +82,7 @@ public class FlightCache extends BaseCache<RedisCache> {
         .ident(flightInfo.get(IDENT))
         .faFlightId(flightInfo.get(FA_FLIGHT_ID))
         .airline(flightInfo.get(AIRLINE))
-        .airlineIata(flightInfo.get(AIRLNE_IATA))
+        .airlineIata(flightInfo.get(AIRLINE_IATA))
         .flightNumber(flightInfo.get(FLIGHT_NUMBER))
         .tailNumber(flightInfo.get(TAIL_NUMBER))
         .codeShares(flightInfo.get(CODE_SHARES))
