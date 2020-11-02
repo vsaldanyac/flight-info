@@ -18,6 +18,7 @@ public interface FlightInfoMapper {
   @InheritInverseConfiguration
   FlightInfoDTO map(FlightInfoDAO flightInfoDAO);
 
+  //TODO: Use a decorator to get airport info
   AirportDAO map(AirportDTO airportDTO);
 
   @InheritInverseConfiguration
