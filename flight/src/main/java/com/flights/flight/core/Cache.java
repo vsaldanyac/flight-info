@@ -2,10 +2,11 @@ package com.flights.flight.core;
 
 
 import com.flights.flight.exception.CacheException;
-import java.util.Map;
-import java.util.Set;
 import redis.clients.jedis.ScanResult;
 import redis.clients.jedis.Tuple;
+
+import java.util.Map;
+import java.util.Set;
 
 public abstract class Cache {
   protected String host;
@@ -41,7 +42,7 @@ public abstract class Cache {
    * Returns a set of members with the given params
    *
    * @param key        Id Set.
-   * @param weight Weight of the set elements
+   * @param weight     Weight of the set elements
    * @param startIndex Index init
    * @param count      Numbers of rows to be returned
    * @return Set of members that had the given parameters

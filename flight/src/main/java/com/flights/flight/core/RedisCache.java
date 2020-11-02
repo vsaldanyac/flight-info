@@ -1,18 +1,14 @@
 package com.flights.flight.core;
 
 import com.flights.flight.exception.CacheException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import redis.clients.jedis.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.ScanParams;
-import redis.clients.jedis.ScanResult;
-import redis.clients.jedis.Tuple;
 
 import static java.util.Collections.emptyList;
 import static redis.clients.jedis.ScanParams.SCAN_POINTER_START;
@@ -199,7 +195,7 @@ public class RedisCache extends Cache {
   /**
    * Returns the Pool of Connections to Redis
    *
-   * @return  Pool of Connections to Redis.
+   * @return Pool of Connections to Redis.
    */
   private JedisPool getPool() {
     if (pool == null) {

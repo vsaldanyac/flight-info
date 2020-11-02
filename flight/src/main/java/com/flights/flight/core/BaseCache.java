@@ -5,7 +5,7 @@ public class BaseCache<T extends Cache> {
   protected T cache;
 
   public BaseCache(String host, int port, String userName, String password, int poolMinIdle,
-      int poolMaxIdle, int poolMaxTotal, long timeout, T cache) {
+                   int poolMaxIdle, int poolMaxTotal, long timeout, T cache) {
     this.cache = cache;
     this.cache.setHost(host);
     this.cache.setPort(port);
@@ -18,7 +18,7 @@ public class BaseCache<T extends Cache> {
   }
 
   public BaseCache(String host, int port, int poolMinIdle, int poolMaxIdle, int poolMaxTotal,
-      T cache) {
+                   T cache) {
     this.cache = cache;
     this.cache.setHost(host);
     this.cache.setPort(port);
