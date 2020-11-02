@@ -11,9 +11,12 @@ docker-compose up -d --build
 ### Structure
 
 - There are three docker containers up. 
-· One for redis (on the redis port)
-· One for the external service that provides the flights for the given tail number (on port 8081)
-· One for the service that we want to use (on port 8080)
+
+· One for redis (on the redis port) named _redis_
+
+· One for the external service that provides the flights for the given tail number (on port 8081) named _plane-services_
+
+· One for the service that we want to use (on port 8080) named _flight-services_
 
 The data to use for this test, borns from an external json file, loaded as a resource of the external service.
 
@@ -38,6 +41,12 @@ On every case we can see the info with redis_cli with _keys *_ to see the info s
 Sample:
 
 `hgetall TAIL_EC-ITB_FLIGHT_2655`
+
+- We can retrieve the info about a tail number with _keys TAIL_{tail_number}*_
+
+Sample:
+
+`keys TAIL_EC-ITB*`
 
 ### Security
 
