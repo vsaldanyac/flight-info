@@ -81,7 +81,7 @@ public class FlightCache extends BaseCache<RedisCache> {
     return cache.keys(TAIL_KEY + tailNumber + "*");
   }
 
-  private AirportDAO getAirportInfoFromRedis(String code) {
+  public AirportDAO getAirportInfoFromRedis(String code) {
     Map<String, String> airportInfo = cache.hGetAll(AIRPORT_KEY + code);
     return AirportDAO.builder()
         .airportName(airportInfo.get(AIRPORT_NAME))

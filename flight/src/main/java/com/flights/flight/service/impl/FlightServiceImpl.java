@@ -30,7 +30,8 @@ public class FlightServiceImpl implements FlightService {
   @Autowired
   FlightCacheService flightCacheService;
 
-  FlightInfoMapper flightInfoMapper = FlightInfoMapper.INSTANCE;
+  @Autowired
+  FlightInfoMapper flightInfoMapper;
 
   @Override
   public FlightInfoDTO getFlightInformation(String tailNumber, String flightNumber) {
