@@ -8,6 +8,7 @@ services:
       - 8080:8080
     links:
       - redis
+      - plane-services
 
   plane-services:
     build:
